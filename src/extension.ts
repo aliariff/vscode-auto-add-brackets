@@ -91,4 +91,4 @@ function isInsideString(lineText: string, indicator: string) {
     return occurrences % 2;
 }
 
-export function deactivate() {}
+export function deactivate() { }
