@@ -4,7 +4,7 @@ This extension will automatically add complete brackets when writing interpolate
 
 This solution inspired from sublime text behaviour.
 
-![Demo GIF](https://lh4.googleusercontent.com/iQppZOOidq8QB2uWhHRyMhaVlWQkPt2OxdLs1gVCOd5MnRktMasNFL0yBBbIy5F2N92AoiQ8OC3XIw=w2560-h1320)
+![Demo GIF](http://drive.google.com/uc?export=view&id=1kqZT4yOlKl_gyGOYuwzNSfy6BFRpl4SQ)
 
 Supported languages:
 
