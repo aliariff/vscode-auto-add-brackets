@@ -2,7 +2,7 @@
     "name": "auto-add-brackets",
     "displayName": "Auto Add Brackets in String Interpolation",
     "description": "Automatically add complete brackets when writing interpolated string",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "aliariff",
     "license": "MIT",
     "icon": "images/icon.png",
