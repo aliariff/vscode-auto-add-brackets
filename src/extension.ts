@@ -22,8 +22,6 @@ async function autoAddBrackets(key: string, indicator: string) {
         return;
     }
 
-    console.log('autoAddBrackets');
-
     if (editor.selections[0].isEmpty === false && editor.selections[0].isSingleLine === false) {
         await editor.edit(textEditor => {
             textEditor.replace(
