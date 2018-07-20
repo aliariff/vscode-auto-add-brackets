@@ -83,7 +83,13 @@ async function multipleSelection(editor: vscode.TextEditor, key: string, indicat
 }
 
 function isInsideString(lineText: string, indicator: string) {
-    const occurrences: number = lineText.split(indicator).length - 1;
+    let occurrences: number = lineText.split(indicator).length - 1;
+    const escaped: number = lineText.split(`\\${indicator}`).length - 1;
+
+    // ignore escaped character
+    // example: "abc \" xyz"
+    occurrences -= escaped;
+
     // if the occurrences of the indicator (", `) is odd then it is inside a string
     // example: some code, "string without interpolation", 'another simple string', "#{string} with interpolation"
     return occurrences % 2;
