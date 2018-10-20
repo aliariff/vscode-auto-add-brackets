@@ -12,6 +12,9 @@ Supported languages:
 - Javascript
 - Typescript
 - Coffeescript
+- ERB
+- Haml
+- Slim
 
 Related issue:
 
