@@ -2,7 +2,7 @@
     "name": "auto-add-brackets",
     "displayName": "Auto Add Brackets in String Interpolation",
     "description": "Automatically add complete brackets when writing interpolated string",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "publisher": "aliariff",
     "license": "MIT",
     "icon": "images/icon.png",
@@ -30,7 +30,8 @@
     ],
     "main": "./out/extension",
     "contributes": {
-        "keybindings": [{
+        "keybindings": [
+            {
                 "command": "auto.addBracketsHashtag",
                 "key": "shift+3",
                 "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'ruby'"
@@ -66,19 +67,41 @@
                 "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'typescript'"
             }
         ],
-        "languages": [{
-            "id": "erb",
-            "aliases": ["Ruby Erb", "ERB", "erb"],
-            "extensions": [".erb"]
-        }, {
-            "id": "haml",
-            "aliases": ["Ruby Haml", "Haml", "haml"],
-            "extensions": [".haml"]
-        }, {
-            "id": "slim",
-            "aliases": ["Ruby Slim", "Slim", "slim"],
-            "extensions": [".slim"]
-        }]
+        "languages": [
+            {
+                "id": "erb",
+                "aliases": [
+                    "Ruby Erb",
+                    "ERB",
+                    "erb"
+                ],
+                "extensions": [
+                    ".erb"
+                ]
+            },
+            {
+                "id": "haml",
+                "aliases": [
+                    "Ruby Haml",
+                    "Haml",
+                    "haml"
+                ],
+                "extensions": [
+                    ".haml"
+                ]
+            },
+            {
+                "id": "slim",
+                "aliases": [
+                    "Ruby Slim",
+                    "Slim",
+                    "slim"
+                ],
+                "extensions": [
+                    ".slim"
+                ]
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
