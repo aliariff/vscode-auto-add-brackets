@@ -23,12 +23,14 @@
         "onLanguage:ruby",
         "onLanguage:javascript",
         "onLanguage:typescript",
-        "onLanguage:coffeescript"
+        "onLanguage:coffeescript",
+        "onLanguage:erb",
+        "onLanguage:haml",
+        "onLanguage:slim"
     ],
     "main": "./out/extension",
     "contributes": {
-        "keybindings": [
-            {
+        "keybindings": [{
                 "command": "auto.addBracketsHashtag",
                 "key": "shift+3",
                 "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'ruby'"
@@ -37,6 +39,21 @@
                 "command": "auto.addBracketsHashtag",
                 "key": "shift+3",
                 "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'coffeescript'"
+            },
+            {
+                "command": "auto.addBracketsHashtag",
+                "key": "shift+3",
+                "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'erb'"
+            },
+            {
+                "command": "auto.addBracketsHashtag",
+                "key": "shift+3",
+                "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'haml'"
+            },
+            {
+                "command": "auto.addBracketsHashtag",
+                "key": "shift+3",
+                "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'slim'"
             },
             {
                 "command": "auto.addBracketsDollar",
@@ -48,7 +65,20 @@
                 "key": "shift+4",
                 "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'typescript'"
             }
-        ]
+        ],
+        "languages": [{
+            "id": "erb",
+            "aliases": ["Ruby Erb", "ERB", "erb"],
+            "extensions": [".erb"]
+        }, {
+            "id": "haml",
+            "aliases": ["Ruby Haml", "Haml", "haml"],
+            "extensions": [".haml"]
+        }, {
+            "id": "slim",
+            "aliases": ["Ruby Slim", "Slim", "slim"],
+            "extensions": [".slim"]
+        }]
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
