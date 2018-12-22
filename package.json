@@ -21,6 +21,7 @@
     ],
     "activationEvents": [
         "onLanguage:ruby",
+        "onLanguage:elixir",
         "onLanguage:javascript",
         "onLanguage:typescript",
         "onLanguage:coffeescript",
@@ -55,6 +56,11 @@
                 "command": "auto.addBracketsHashtag",
                 "key": "shift+3",
                 "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'slim'"
+            },
+            {
+                "command": "auto.addBracketsHashtag",
+                "key": "shift+3",
+                "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'elixir'"
             },
             {
                 "command": "auto.addBracketsDollar",
