@@ -86,6 +86,17 @@
                 ]
             },
             {
+                "id": "elixir",
+                "aliases": [
+                    "Elixir",
+                    "elixir"
+                ],
+                "extensions": [
+                    ".ex",
+                    ".exs"
+                ]
+            },
+            {
                 "id": "haml",
                 "aliases": [
                     "Ruby Haml",
