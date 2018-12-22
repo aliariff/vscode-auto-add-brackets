@@ -21,6 +21,7 @@
     ],
     "activationEvents": [
         "onLanguage:ruby",
+        "onLanguage:elixir",
         "onLanguage:javascript",
         "onLanguage:typescript",
         "onLanguage:coffeescript",
@@ -57,6 +58,11 @@
                 "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'slim'"
             },
             {
+                "command": "auto.addBracketsHashtag",
+                "key": "shift+3",
+                "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'elixir'"
+            },
+            {
                 "command": "auto.addBracketsDollar",
                 "key": "shift+4",
                 "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'javascript'"
@@ -77,6 +83,17 @@
                 ],
                 "extensions": [
                     ".erb"
+                ]
+            },
+            {
+                "id": "elixir",
+                "aliases": [
+                    "Elixir",
+                    "elixir"
+                ],
+                "extensions": [
+                    ".ex",
+                    ".exs"
                 ]
             },
             {

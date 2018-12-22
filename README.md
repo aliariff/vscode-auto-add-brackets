@@ -9,6 +9,7 @@ This solution inspired from sublime text behaviour.
 Supported languages:
 
 - Ruby
+- Elixir
 - Javascript
 - Typescript
 - Coffeescript
