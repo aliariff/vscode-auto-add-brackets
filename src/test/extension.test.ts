@@ -1,22 +1,79 @@
-//
-// Note: This example test is leveraging the Mocha test framework.
-// Please refer to their documentation on https://mochajs.org/ for help.
-//
-
-// The module 'assert' provides assertion methods from node
 import * as assert from 'assert';
+import { commands, Position, Selection, window, workspace } from 'vscode';
 
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
-// import * as vscode from 'vscode';
-// import * as myExtension from '../extension';
+const wait = (amount = 0) =>
+  new Promise(resolve => setTimeout(resolve, amount));
 
-// Defines a Mocha test suite to group tests of similar kind together
-suite("Extension Tests", function () {
+suite('Auto Add Brackets in String Interpolation', async () => {
+  test('does nothing when language is not enabled', async () => {
+    const expectedResult = '`test`';
 
-    // Defines a Mocha unit test
-    test("Something 1", function() {
-        assert.equal(-1, [1, 2, 3].indexOf(5));
-        assert.equal(-1, [1, 2, 3].indexOf(0));
+    const textDocument = await workspace.openTextDocument({
+      content: expectedResult,
+      language: 'java',
     });
+
+    const editor = await window.showTextDocument(textDocument);
+    editor.selection = new Selection(new Position(0, 2), new Position(0, 6));
+
+    await commands.executeCommand('auto.addInterpolation');
+    await wait(100);
+
+    const result = editor.document.getText();
+
+    assert.equal(result, expectedResult);
+  });
+
+  test('does nothing when activated outside of a string wrapper', async () => {
+    const textDocument = await workspace.openTextDocument({
+      content: '',
+      language: 'typescript',
+    });
+
+    const editor = await window.showTextDocument(textDocument);
+
+    await commands.executeCommand('auto.addInterpolation');
+    await wait(100);
+
+    const result = editor.document.getText();
+
+    assert.equal(result, '$');
+  });
+
+  test('interpolation when one word is selected', async () => {
+    const textDocument = await workspace.openTextDocument({
+      content: '`test`',
+      language: 'typescript',
+    });
+
+    const editor = await window.showTextDocument(textDocument);
+    editor.selection = new Selection(new Position(0, 1), new Position(0, 5));
+
+    await commands.executeCommand('auto.addInterpolation');
+    await wait(100);
+
+    const result = editor.document.getText();
+
+    assert.equal(result, '`${test}`');
+  });
+
+  test('interpolation with multiple cursors', async () => {
+    const textDocument = await workspace.openTextDocument({
+      content: '`test test_test`',
+      language: 'typescript',
+    });
+
+    const editor = await window.showTextDocument(textDocument);
+    editor.selections = [
+      new Selection(new Position(0, 1), new Position(0, 5)),
+      new Selection(new Position(0, 6), new Position(0, 15)),
+    ];
+
+    await commands.executeCommand('auto.addInterpolation');
+    await wait(100);
+
+    const result = editor.document.getText();
+
+    assert.equal(result, '`${test} ${test_test}`');
+  });
 });
