@@ -57,7 +57,7 @@ Then add the keybind for the language:
   {
     "command": "auto.addInterpolation",
     "key": "shift+3",
-    "when": "editorTextFocus  && editorLangId == 'YOUR_LANGUAGE_ID'"
+    "when": "editorTextFocus && editorLangId == 'YOUR_LANGUAGE_ID'"
   },
 }
 ```

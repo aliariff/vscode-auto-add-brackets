@@ -46,7 +46,7 @@ function shouldInterpolate(
   );
 }
 
-// updatenseletions moves the selections to the expected place after adding interpolation.
+// updateSelections moves the selections to the expected place after adding interpolation.
 // It makes it behave the same way other wrapping operations do in VSCode
 function updateSelections(editor: TextEditor) {
   const updatedSelections: Selection[] = [];
