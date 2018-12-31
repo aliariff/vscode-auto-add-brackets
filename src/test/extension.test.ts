@@ -40,6 +40,23 @@ suite('Auto Add Brackets in String Interpolation', async () => {
     assert.equal(result, '$');
   });
 
+  test('iterpolation when inside a string wrapper but no selection', async () => {
+    const textDocument = await workspace.openTextDocument({
+      content: '`test `',
+      language: 'typescript',
+    });
+
+    const editor = await window.showTextDocument(textDocument);
+    editor.selection = new Selection(new Position(0, 6), new Position(0, 6));
+
+    await commands.executeCommand('auto.addInterpolation');
+    await wait(100);
+
+    const result = editor.document.getText();
+
+    assert.equal(result, '`test ${}`');
+  });
+
   test('interpolation when one word is selected', async () => {
     const textDocument = await workspace.openTextDocument({
       content: '`test`',
