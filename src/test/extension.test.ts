@@ -1,5 +1,6 @@
 import * as assert from 'assert';
 import { commands, Position, Selection, window, workspace } from 'vscode';
+import Config, { Language } from '../config';
 
 const wait = (amount = 0) =>
   new Promise(resolve => setTimeout(resolve, amount));
@@ -24,10 +25,16 @@ suite('Auto Add Brackets in String Interpolation', async () => {
     assert.equal(result, expectedResult);
   });
 
-  test('write the symbol when activated outside of a string wrapper', async () => {
+  for (let language in Config.languages) {
+    testDefaultSupportedLanguages(language, Config.languages[language]);
+  }
+});
+
+function testDefaultSupportedLanguages(language: string, config: Language) {
+  test(`[${language}] write the symbol when activated outside of a string wrapper`, async () => {
     const textDocument = await workspace.openTextDocument({
       content: '',
-      language: 'typescript',
+      language: language,
     });
 
     const editor = await window.showTextDocument(textDocument);
@@ -37,13 +44,13 @@ suite('Auto Add Brackets in String Interpolation', async () => {
 
     const result = editor.document.getText();
 
-    assert.equal(result, '$');
+    assert.equal(result, config.symbol);
   });
 
-  test('interpolation when inside a string wrapper but no selection', async () => {
+  test(`[${language}] interpolation when inside a string wrapper but no selection`, async () => {
     const textDocument = await workspace.openTextDocument({
-      content: '`test `',
-      language: 'typescript',
+      content: `${config.stringWrapper}test ${config.stringWrapper}`,
+      language: language,
     });
 
     const editor = await window.showTextDocument(textDocument);
@@ -54,13 +61,16 @@ suite('Auto Add Brackets in String Interpolation', async () => {
 
     const result = editor.document.getText();
 
-    assert.equal(result, '`test ${}`');
+    assert.equal(
+      result,
+      `${config.stringWrapper}test ${config.symbol}{}${config.stringWrapper}`,
+    );
   });
 
-  test('interpolation when one word is selected', async () => {
+  test(`[${language}] interpolation when one word is selected`, async () => {
     const textDocument = await workspace.openTextDocument({
-      content: '`test`',
-      language: 'typescript',
+      content: `${config.stringWrapper}test${config.stringWrapper}`,
+      language: language,
     });
 
     const editor = await window.showTextDocument(textDocument);
@@ -71,13 +81,16 @@ suite('Auto Add Brackets in String Interpolation', async () => {
 
     const result = editor.document.getText();
 
-    assert.equal(result, '`${test}`');
+    assert.equal(
+      result,
+      `${config.stringWrapper}${config.symbol}{test}${config.stringWrapper}`,
+    );
   });
 
-  test('interpolation with multiple cursors', async () => {
+  test(`[${language}] interpolation with multiple cursors`, async () => {
     const textDocument = await workspace.openTextDocument({
-      content: '`test test_test`',
-      language: 'typescript',
+      content: `${config.stringWrapper}test test_test${config.stringWrapper}`,
+      language: language,
     });
 
     const editor = await window.showTextDocument(textDocument);
@@ -91,6 +104,11 @@ suite('Auto Add Brackets in String Interpolation', async () => {
 
     const result = editor.document.getText();
 
-    assert.equal(result, '`${test} ${test_test}`');
+    assert.equal(
+      result,
+      `${config.stringWrapper}${config.symbol}{test} ${
+        config.symbol
+      }{test_test}${config.stringWrapper}`,
+    );
   });
-});
+}
