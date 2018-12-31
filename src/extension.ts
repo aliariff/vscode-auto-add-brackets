@@ -1,98 +1,118 @@
-'use strict';
+import {
+  commands,
+  ExtensionContext,
+  Position,
+  Range,
+  Selection,
+  TextEditor,
+  window,
+} from 'vscode';
 
-import * as vscode from "vscode";
+import Config, { Language } from './config';
 
-export function activate(context: vscode.ExtensionContext) {
-    console.log('"auto-add-brackets" extension is now active!');
+function isInsideString(
+  editor: TextEditor,
+  stringWrapper: string,
+  selection: Selection,
+) {
+  const lineText = editor.document.getText(
+    new Range(new Position(selection.start.line, 0), selection.start),
+  );
 
-    let addBracketsHashtag = vscode.commands.registerCommand('auto.addBracketsHashtag', async () => {
-        await autoAddBrackets('#', '"');
+  let occurrences = lineText.split(stringWrapper).length - 1;
+  const escaped = lineText.split(`\\${stringWrapper}`).length - 1;
+
+  // ignore escaped character
+  // example: "abc \" xyz"
+  occurrences -= escaped;
+
+  // if the occurrences of the indicator (", `) is odd then it is inside a string
+  // example: some code, "string without interpolation", 'another simple string', "#{string} with interpolation"
+  return occurrences % 2;
+}
+
+function shouldInterpolate(
+  editor: TextEditor,
+  language: Language,
+  selection: Selection,
+) {
+  if (selection === undefined) {
+    selection = editor.selection;
+  }
+
+  return (
+    isInsideString(editor, language.stringWrapper, selection) &&
+    selection.isSingleLine
+  );
+}
+
+// updatenseletions moves the selections to the expected place after adding interpolation.
+// It makes it behave the same way other wrapping operations do in VSCode
+function updateSelections(editor: TextEditor) {
+  const updatedSelections: Selection[] = [];
+
+  editor.selections.forEach(selection => {
+    // If selection is empty we either did not add an interpolation
+    // or we added it without having anything selected
+    if (selection.isEmpty) {
+      const characterBeforeCursor = editor.document.getText(
+        new Range(selection.start, selection.end.translate(0, -1)),
+      );
+
+      // If the characterBeforeCursor is a '}' it means that we did add a
+      // interpolation, so we want to move one character back to position
+      // the cursor in the middle of it.
+      if (characterBeforeCursor === '}') {
+        const newPosition = selection.start.translate(0, -1);
+        updatedSelections.push(new Selection(newPosition, newPosition));
+      } else {
+        // Otherwise we did not add an interpolation, so we just don't change
+        // anything
+        updatedSelections.push(selection);
+      }
+    } else {
+      // In this case we added a interpolation with stuff selected, so let's
+      // position the selection properly
+      updatedSelections.push(
+        new Selection(selection.start, selection.end.translate(0, -1)),
+      );
+    }
+  });
+
+  editor.selections = updatedSelections;
+}
+
+async function autoAddInterpolation() {
+  const editor = window.activeTextEditor;
+  if (editor === undefined) {
+    return;
+  }
+
+  const language = Config.languages[editor.document.languageId];
+
+  await editor.edit(editBuilder => {
+    editor.selections.forEach(selection => {
+      if (shouldInterpolate(editor, language, selection)) {
+        editBuilder.insert(selection.start, `${language.symbol}{`);
+        editBuilder.insert(selection.end, '}');
+      } else {
+        // Just passthrough and insert the symbol as if the extension did not even exist
+        editBuilder.insert(selection.start, language.symbol);
+      }
     });
-    let addBracketsDollar = vscode.commands.registerCommand('auto.addBracketsDollar', async () => {
-        await autoAddBrackets('$', '`');
-    });
+  });
 
-    context.subscriptions.push(addBracketsHashtag);
-    context.subscriptions.push(addBracketsDollar);
+  updateSelections(editor);
 }
 
-async function autoAddBrackets(key: string, indicator: string) {
-    const editor = vscode.window.activeTextEditor;
-    if (editor === undefined) {
-        return;
-    }
+export function activate(context: ExtensionContext) {
+  console.log('"auto-add-brackets" extension is now active!');
 
-    if (editor.selections[0].isEmpty === false && editor.selections[0].isSingleLine === false) {
-        await editor.edit(textEditor => {
-            textEditor.replace(
-                editor.selections[0], key
-            );
-        });
-    } else if (editor.selections[0].isEmpty === false && editor.selections[0].isSingleLine === true) {
-        await multipleSelection(editor, key, indicator);
-    } else {
-        await singleSelection(editor, key, indicator);
-    }
+  context.subscriptions.push(
+    commands.registerCommand('auto.addInterpolation', () => {
+      autoAddInterpolation();
+    }),
+  );
 }
 
-async function singleSelection(editor: vscode.TextEditor, key: string, indicator: string) {
-    const lineNumber: number = editor.selection.active.line;
-    const columnNumber: number = editor.selection.active.character;
-    const start: vscode.Position = new vscode.Position(lineNumber, 0);
-    const end: vscode.Position = new vscode.Position(lineNumber, columnNumber);
-    const lineText: string = editor.document.getText(new vscode.Range(start, end));
-
-    if (isInsideString(lineText, indicator)) {
-        await editor.edit(textEditor => {
-            textEditor.insert(
-                new vscode.Position(lineNumber, columnNumber), `${key}{}`
-            );
-        });
-        await vscode.commands.executeCommand("cursorLeft");
-    } else {
-        await editor.edit(textEditor => {
-            textEditor.insert(
-                new vscode.Position(lineNumber, columnNumber), key
-            );
-        });
-    }
-}
-
-async function multipleSelection(editor: vscode.TextEditor, key: string, indicator: string) {
-    const lineNumber: number = editor.selections[0].start.line;
-    const start: vscode.Position = new vscode.Position(lineNumber, 0);
-    const end: vscode.Position = editor.selections[0].start;
-    const lineText: string = editor.document.getText(new vscode.Range(start, end));
-
-    if (isInsideString(lineText, indicator)) {
-        await editor.edit(textEditor => {
-            textEditor.insert(
-                editor.selections[0].start, `${key}{`
-            );
-            textEditor.insert(
-                editor.selections[0].end, '}'
-            );
-        });
-    } else {
-        await editor.edit(textEditor => {
-            textEditor.replace(
-                editor.selections[0], key
-            );
-        });
-    }
-}
-
-function isInsideString(lineText: string, indicator: string) {
-    let occurrences: number = lineText.split(indicator).length - 1;
-    const escaped: number = lineText.split(`\\${indicator}`).length - 1;
-
-    // ignore escaped character
-    // example: "abc \" xyz"
-    occurrences -= escaped;
-
-    // if the occurrences of the indicator (", `) is odd then it is inside a string
-    // example: some code, "string without interpolation", 'another simple string', "#{string} with interpolation"
-    return occurrences % 2;
-}
-
-export function deactivate() { }
+export function deactivate() {}

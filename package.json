@@ -1,137 +1,207 @@
 {
-    "name": "auto-add-brackets",
-    "displayName": "Auto Add Brackets in String Interpolation",
-    "description": "Automatically add complete brackets when writing interpolated string",
-    "version": "0.6.0",
-    "publisher": "aliariff",
-    "license": "MIT",
-    "icon": "images/icon.png",
-    "bugs": "https://github.com/aliariff/vscode-auto-add-brackets/issues",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/aliariff/vscode-auto-add-brackets"
-    },
-    "engines": {
-        "vscode": "^1.25.0"
-    },
-    "categories": [
-        "Keymaps",
-        "Formatters",
-        "Other"
-    ],
-    "activationEvents": [
-        "onLanguage:ruby",
-        "onLanguage:elixir",
-        "onLanguage:javascript",
-        "onLanguage:typescript",
-        "onLanguage:coffeescript",
-        "onLanguage:erb",
-        "onLanguage:haml",
-        "onLanguage:slim"
-    ],
-    "main": "./out/extension",
-    "contributes": {
-        "keybindings": [
-            {
-                "command": "auto.addBracketsHashtag",
-                "key": "shift+3",
-                "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'ruby'"
+  "name": "auto-add-brackets",
+  "displayName": "Auto Add Brackets in String Interpolation",
+  "description": "Automatically add complete brackets when writing interpolated string",
+  "version": "0.6.0",
+  "publisher": "aliariff",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "bugs": "https://github.com/aliariff/vscode-auto-add-brackets/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aliariff/vscode-auto-add-brackets"
+  },
+  "engines": {
+    "vscode": "^1.25.0"
+  },
+  "categories": [
+    "Keymaps",
+    "Formatters",
+    "Other"
+  ],
+  "keywords": [
+    "bracket",
+    "string",
+    "interpolation"
+  ],
+  "main": "./out/extension",
+  "activationEvents": [
+    "*"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "Auto Add Brackets",
+      "type": "object",
+      "properties": {
+        "auto.languages": {
+          "title": "Auto Add Brackets In String Interpolations to files with these languages",
+          "type": "array",
+          "default": {
+            "ruby": {
+              "symbol": "#",
+              "stringWrapper": "\""
             },
-            {
-                "command": "auto.addBracketsHashtag",
-                "key": "shift+3",
-                "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'coffeescript'"
+            "elixir": {
+              "symbol": "#",
+              "stringWrapper": "\""
             },
-            {
-                "command": "auto.addBracketsHashtag",
-                "key": "shift+3",
-                "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'erb'"
+            "javascript": {
+              "symbol": "$",
+              "stringWrapper": "`"
             },
-            {
-                "command": "auto.addBracketsHashtag",
-                "key": "shift+3",
-                "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'haml'"
+            "javascriptreact": {
+              "symbol": "$",
+              "stringWrapper": "`"
             },
-            {
-                "command": "auto.addBracketsHashtag",
-                "key": "shift+3",
-                "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'slim'"
+            "typescript": {
+              "symbol": "$",
+              "stringWrapper": "`"
             },
-            {
-                "command": "auto.addBracketsHashtag",
-                "key": "shift+3",
-                "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'elixir'"
+            "typescriptreact": {
+              "symbol": "$",
+              "stringWrapper": "`"
             },
-            {
-                "command": "auto.addBracketsDollar",
-                "key": "shift+4",
-                "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'javascript'"
+            "coffeescript": {
+              "symbol": "#",
+              "stringWrapper": "\""
             },
-            {
-                "command": "auto.addBracketsDollar",
-                "key": "shift+4",
-                "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'typescript'"
+            "erb": {
+              "symbol": "#",
+              "stringWrapper": "\""
+            },
+            "haml": {
+              "symbol": "#",
+              "stringWrapper": "\""
+            },
+            "slim": {
+              "symbol": "#",
+              "stringWrapper": "\""
+            },
+            "groovy": {
+              "symbol": "$",
+              "stringWrapper": "\""
             }
+          }
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+3",
+        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'ruby'"
+      },
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+3",
+        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'coffeescript'"
+      },
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+3",
+        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'erb'"
+      },
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+3",
+        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'haml'"
+      },
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+3",
+        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'slim'"
+      },
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+3",
+        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'elixir'"
+      },
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+4",
+        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'groovy'"
+      },
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+4",
+        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'javascript'"
+      },
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+4",
+        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'javascriptreact'"
+      },
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+4",
+        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'typescript'"
+      },
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+4",
+        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'typescriptreact'"
+      }
+    ],
+    "languages": [
+      {
+        "id": "erb",
+        "aliases": [
+          "Ruby Erb",
+          "ERB",
+          "erb"
         ],
-        "languages": [
-            {
-                "id": "erb",
-                "aliases": [
-                    "Ruby Erb",
-                    "ERB",
-                    "erb"
-                ],
-                "extensions": [
-                    ".erb"
-                ]
-            },
-            {
-                "id": "elixir",
-                "aliases": [
-                    "Elixir",
-                    "elixir"
-                ],
-                "extensions": [
-                    ".ex",
-                    ".exs"
-                ]
-            },
-            {
-                "id": "haml",
-                "aliases": [
-                    "Ruby Haml",
-                    "Haml",
-                    "haml"
-                ],
-                "extensions": [
-                    ".haml"
-                ]
-            },
-            {
-                "id": "slim",
-                "aliases": [
-                    "Ruby Slim",
-                    "Slim",
-                    "slim"
-                ],
-                "extensions": [
-                    ".slim"
-                ]
-            }
+        "extensions": [
+          ".erb"
         ]
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.21",
-        "tslint": "^5.8.0",
-        "@types/node": "^8.10.25",
-        "@types/mocha": "^2.2.42"
-    }
+      },
+      {
+        "id": "elixir",
+        "aliases": [
+          "Elixir",
+          "elixir"
+        ],
+        "extensions": [
+          ".ex",
+          ".exs"
+        ]
+      },
+      {
+        "id": "haml",
+        "aliases": [
+          "Ruby Haml",
+          "Haml",
+          "haml"
+        ],
+        "extensions": [
+          ".haml"
+        ]
+      },
+      {
+        "id": "slim",
+        "aliases": [
+          "Ruby Slim",
+          "Slim",
+          "slim"
+        ],
+        "extensions": [
+          ".slim"
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^8.10.25",
+    "prettier": "^1.15.3",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.21"
+  }
 }
