@@ -1,7 +1,6 @@
 # vscode-auto-add-brackets
 
 [![Build Status](https://dev.azure.com/aliariff/vscode-auto-add-brackets/_apis/build/status/vscode-auto-add-brackets-CI?branchName=master)](https://dev.azure.com/aliariff/vscode-auto-add-brackets/_build/latest?definitionId=1?branchName=master)
-[![codecov](https://codecov.io/gh/aliariff/vscode-auto-add-brackets/branch/master/graph/badge.svg)](https://codecov.io/gh/aliariff/vscode-auto-add-brackets)
 
 This extension will automatically add complete brackets when writing interpolated string.
 
