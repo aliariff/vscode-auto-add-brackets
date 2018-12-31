@@ -3,6 +3,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## 0.7.0 - 2018-12-31
+### Added
+- Support for Javascript React, Typescript React, Groovy
+- Support for multi cursor selection
+- Support for adding new languages through configuration
+- Proper positioning of the selection after inserting the interpolation
+- Add Tests
+- Other general improvements to the codebase
+
+## 0.6.0 - 2018-12-22
+### Added
+- Support for Elixir
+
 ## 0.5.0 - 2018-10-20
 ### Added
 - Support for ERB, Haml, and Slim files
