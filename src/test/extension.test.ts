@@ -24,7 +24,7 @@ suite('Auto Add Brackets in String Interpolation', async () => {
     assert.equal(result, expectedResult);
   });
 
-  test('does nothing when activated outside of a string wrapper', async () => {
+  test('write the symbol when activated outside of a string wrapper', async () => {
     const textDocument = await workspace.openTextDocument({
       content: '',
       language: 'typescript',

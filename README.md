@@ -41,7 +41,7 @@ You can enable other languages yourself by doing the following:
       "stringWrapper": "`"
     },
     "ruby": {
-      "symbol": "$",
+      "symbol": "#",
       "stringWrapper": "\""
     }
   }
