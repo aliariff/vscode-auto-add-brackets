@@ -17,7 +17,7 @@ suite('Auto Add Brackets in String Interpolation', async () => {
     editor.selection = new Selection(new Position(0, 2), new Position(0, 6));
 
     await commands.executeCommand('auto.addInterpolation');
-    await wait(100);
+    await wait(500);
 
     const result = editor.document.getText();
 
@@ -33,7 +33,7 @@ suite('Auto Add Brackets in String Interpolation', async () => {
     const editor = await window.showTextDocument(textDocument);
 
     await commands.executeCommand('auto.addInterpolation');
-    await wait(100);
+    await wait(500);
 
     const result = editor.document.getText();
 
@@ -50,7 +50,7 @@ suite('Auto Add Brackets in String Interpolation', async () => {
     editor.selection = new Selection(new Position(0, 6), new Position(0, 6));
 
     await commands.executeCommand('auto.addInterpolation');
-    await wait(100);
+    await wait(500);
 
     const result = editor.document.getText();
 
@@ -67,7 +67,7 @@ suite('Auto Add Brackets in String Interpolation', async () => {
     editor.selection = new Selection(new Position(0, 1), new Position(0, 5));
 
     await commands.executeCommand('auto.addInterpolation');
-    await wait(100);
+    await wait(500);
 
     const result = editor.document.getText();
 
@@ -87,7 +87,7 @@ suite('Auto Add Brackets in String Interpolation', async () => {
     ];
 
     await commands.executeCommand('auto.addInterpolation');
-    await wait(100);
+    await wait(500);
 
     const result = editor.document.getText();
 
