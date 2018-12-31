@@ -89,6 +89,12 @@ async function autoAddInterpolation() {
   }
 
   const language = Config.languages[editor.document.languageId];
+  if (language === undefined) {
+    window.showErrorMessage(
+      `Language configuration not found for: ${editor.document.languageId}`,
+    );
+    return;
+  }
 
   await editor.edit(editBuilder => {
     editor.selections.forEach(selection => {
