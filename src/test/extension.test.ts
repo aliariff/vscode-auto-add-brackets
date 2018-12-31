@@ -67,6 +67,30 @@ function testDefaultSupportedLanguages(language: string, config: Language) {
     );
   });
 
+  test(`[${language}] interpolation with stringWrapper character escaped`, async () => {
+    const textDocument = await workspace.openTextDocument({
+      content: `${config.stringWrapper}\\${config.stringWrapper} ${
+        config.stringWrapper
+      }`,
+      language: language,
+    });
+
+    const editor = await window.showTextDocument(textDocument);
+    editor.selection = new Selection(new Position(0, 4), new Position(0, 4));
+
+    await commands.executeCommand('auto.addInterpolation');
+    await wait(500);
+
+    const result = editor.document.getText();
+
+    assert.equal(
+      result,
+      `${config.stringWrapper}\\${config.stringWrapper} ${config.symbol}{}${
+        config.stringWrapper
+      }`,
+    );
+  });
+
   test(`[${language}] interpolation when one word is selected`, async () => {
     const textDocument = await workspace.openTextDocument({
       content: `${config.stringWrapper}test${config.stringWrapper}`,
