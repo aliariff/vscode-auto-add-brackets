@@ -89,57 +89,57 @@
       {
         "command": "auto.addInterpolation",
         "key": "shift+3",
-        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'ruby'"
+        "when": "editorTextFocus && editorLangId == 'ruby' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       },
       {
         "command": "auto.addInterpolation",
         "key": "shift+3",
-        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'coffeescript'"
+        "when": "editorTextFocus && editorLangId == 'coffeescript' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       },
       {
         "command": "auto.addInterpolation",
         "key": "shift+3",
-        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'erb'"
+        "when": "editorTextFocus && editorLangId == 'erb' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       },
       {
         "command": "auto.addInterpolation",
         "key": "shift+3",
-        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'haml'"
+        "when": "editorTextFocus && editorLangId == 'haml' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       },
       {
         "command": "auto.addInterpolation",
         "key": "shift+3",
-        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'slim'"
+        "when": "editorTextFocus && editorLangId == 'slim' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       },
       {
         "command": "auto.addInterpolation",
         "key": "shift+3",
-        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'elixir'"
+        "when": "editorTextFocus && editorLangId == 'elixir' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       },
       {
         "command": "auto.addInterpolation",
         "key": "shift+4",
-        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'groovy'"
+        "when": "editorTextFocus && editorLangId == 'groovy' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       },
       {
         "command": "auto.addInterpolation",
         "key": "shift+4",
-        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'javascript'"
+        "when": "editorTextFocus && editorLangId == 'javascript' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       },
       {
         "command": "auto.addInterpolation",
         "key": "shift+4",
-        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'javascriptreact'"
+        "when": "editorTextFocus && editorLangId == 'javascriptreact' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       },
       {
         "command": "auto.addInterpolation",
         "key": "shift+4",
-        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'typescript'"
+        "when": "editorTextFocus && editorLangId == 'typescript' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       },
       {
         "command": "auto.addInterpolation",
         "key": "shift+4",
-        "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'typescriptreact'"
+        "when": "editorTextFocus && editorLangId == 'typescriptreact' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       }
     ],
     "languages": [
