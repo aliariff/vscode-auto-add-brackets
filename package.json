@@ -89,8 +89,7 @@
         }
       }
     },
-    "keybindings": [
-      {
+    "keybindings": [{
         "command": "auto.addInterpolation",
         "key": "shift+3",
         "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'ruby'"
@@ -151,8 +150,7 @@
         "when": "editorTextFocus && (vim.mode != '' ? vim.mode == 'Insert' : true) && editorLangId == 'typescriptreact'"
       }
     ],
-    "languages": [
-      {
+    "languages": [{
         "id": "erb",
         "aliases": [
           "Ruby Erb",
