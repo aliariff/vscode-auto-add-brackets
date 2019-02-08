@@ -16,6 +16,7 @@ By default the following languages are enabled:
 - Elixir
 - Javascript
 - Javascript React
+- Javascript Vue
 - Typescript
 - Typescript React
 - Coffeescript
