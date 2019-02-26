@@ -65,7 +65,7 @@ Then add the keybind for the language:
 }
 ```
 
-> If you are a Vim mode user you should also add `(vim.mode != '' ? vim.mode == 'Insert' : true)` to your "when" clause
+> If you are a Vim mode user you should also add `vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'` to your "when" clause
 
 ## Related issue:
 
