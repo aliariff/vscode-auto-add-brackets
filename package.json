@@ -2,7 +2,7 @@
   "name": "auto-add-brackets",
   "displayName": "Auto Add Brackets in String Interpolation",
   "description": "Automatically add complete brackets when writing interpolated string",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "publisher": "aliariff",
   "license": "MIT",
   "icon": "images/icon.png",
@@ -89,7 +89,8 @@
         }
       }
     },
-    "keybindings": [{
+    "keybindings": [
+      {
         "command": "auto.addInterpolation",
         "key": "shift+3",
         "when": "editorTextFocus && editorLangId == 'ruby' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
@@ -150,7 +151,8 @@
         "when": "editorTextFocus && editorLangId == 'typescriptreact' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       }
     ],
-    "languages": [{
+    "languages": [
+      {
         "id": "erb",
         "aliases": [
           "Ruby Erb",
