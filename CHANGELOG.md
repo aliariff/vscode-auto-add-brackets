@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ## 0.8.0 - 2019-02-27
+### Added
+- Support for Vue
 ### Fixed
 - Fix Vim mode
 
