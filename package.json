@@ -49,6 +49,10 @@
               "symbol": "$",
               "stringWrapper": "`"
             },
+            "vue": {
+              "symbol": "$",
+              "stringWrapper": "`"
+            },
             "javascriptreact": {
               "symbol": "$",
               "stringWrapper": "`"
@@ -85,8 +89,7 @@
         }
       }
     },
-    "keybindings": [
-      {
+    "keybindings": [{
         "command": "auto.addInterpolation",
         "key": "shift+3",
         "when": "editorTextFocus && editorLangId == 'ruby' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
@@ -134,6 +137,11 @@
       {
         "command": "auto.addInterpolation",
         "key": "shift+4",
+        "when": "editorTextFocus && editorLangId == 'vue' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
+      },
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+4",
         "when": "editorTextFocus && editorLangId == 'typescript' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       },
       {
@@ -142,8 +150,7 @@
         "when": "editorTextFocus && editorLangId == 'typescriptreact' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       }
     ],
-    "languages": [
-      {
+    "languages": [{
         "id": "erb",
         "aliases": [
           "Ruby Erb",
@@ -186,6 +193,16 @@
         "extensions": [
           ".slim"
         ]
+      },
+      {
+        "id": "vue",
+        "aliases": [
+          "Vue",
+          "vue"
+        ],
+        "extensions": [
+          ".vue"
+        ]
       }
     ]
   },
@@ -198,10 +215,10 @@
   },
   "devDependencies": {
     "@types/mocha": "^2.2.42",
-    "@types/node": "^8.10.25",
-    "prettier": "^1.15.3",
-    "tslint": "^5.8.0",
+    "@types/node": "^8.10.29",
+    "prettier": "^1.16.4",
+    "tslint": "^5.12.1",
     "typescript": "^2.6.1",
-    "vscode": "^1.1.21"
+    "vscode": "^1.1.29"
   }
 }
