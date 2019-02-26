@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## 0.8.0 - 2019-02-27
+### Fixed
+- Fix Vim mode
+
 ## 0.7.0 - 2018-12-31
 ### Added
 - Support for Javascript React, Typescript React, Groovy
