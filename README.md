@@ -12,18 +12,20 @@ This solution inspired from sublime text behaviour.
 
 By default the following languages are enabled:
 
-- Ruby
+- Coffeescript
+- Crystal
 - Elixir
+- Embedded Crystal
+- ERB
+- Groovy
+- Haml
 - Javascript
 - Javascript React
 - Javascript Vue
+- Ruby
+- Slim
 - Typescript
 - Typescript React
-- Coffeescript
-- ERB
-- Haml
-- Slim
-- Groovy
 
 ### Adding other languages
 
