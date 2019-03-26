@@ -84,6 +84,14 @@
             "groovy": {
               "symbol": "$",
               "stringWrapper": "\""
+            },
+            "crystal": {
+              "symbol": "#",
+              "stringWrapper": "\""
+            },
+            "ecr": {
+              "symbol": "#",
+              "stringWrapper": "\""
             }
           }
         }
@@ -149,6 +157,16 @@
         "command": "auto.addInterpolation",
         "key": "shift+4",
         "when": "editorTextFocus && editorLangId == 'typescriptreact' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
+      },
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+3",
+        "when": "editorTextFocus && editorLangId == 'crystal' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
+      },
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+3",
+        "when": "editorTextFocus && editorLangId == 'ecr' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       }
     ],
     "languages": [
@@ -204,6 +222,25 @@
         ],
         "extensions": [
           ".vue"
+        ]
+      },
+      {
+        "id": "crystal",
+        "aliases": [
+          "Crystal",
+          "crystal"
+        ],
+        "extensions": [
+          ".cr"
+        ]
+      },
+      {
+        "id": "ecr",
+        "aliases": [
+          "Embed Crystal"
+        ],
+        "extensions": [
+          ".ecr"
         ]
       }
     ]
