@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## 0.10.0 - 2019-08-19
+### Added
+- Update package
+
 ## 0.9.0 - 2019-03-26
 ### Added
 - Support for Crystal & Embedded Crystal
