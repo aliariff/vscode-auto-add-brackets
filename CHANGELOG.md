@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## 0.11.0 - 2020-04-16
+### Added
+- Update dependencies package
+- Use GitHub Actions for CI instead of Azure
+
 ## 0.10.0 - 2019-08-19
 ### Added
 - Update package
