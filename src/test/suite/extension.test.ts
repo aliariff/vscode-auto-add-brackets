@@ -1,6 +1,6 @@
 import * as assert from 'assert';
 import { commands, Position, Selection, window, workspace } from 'vscode';
-import Config, { Language } from '../config';
+import Config, { Language } from '../../config';
 
 const wait = (amount = 0) =>
   new Promise(resolve => setTimeout(resolve, amount));

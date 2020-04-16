@@ -3,17 +3,12 @@
     "module": "commonjs",
     "target": "es6",
     "outDir": "out",
-    "lib": ["es6"],
     "sourceMap": true,
     "rootDir": "src",
-    "allowSyntheticDefaultImports": true,
-
     "strict": true,
-    "noUnusedLocals": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedParameters": true
   },
-
-  "include": ["src/**/*"]
+  "exclude": [
+    "node_modules",
+    ".vscode-test"
+  ]
 }
