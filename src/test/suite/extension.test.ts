@@ -69,9 +69,8 @@ function testDefaultSupportedLanguages(language: string, config: Language) {
 
   test(`[${language}] interpolation with stringWrapper character escaped`, async () => {
     const textDocument = await workspace.openTextDocument({
-      content: `${config.stringWrapper}\\${config.stringWrapper} ${
-        config.stringWrapper
-      }`,
+      content: `${config.stringWrapper}\\${config.stringWrapper} ${config.stringWrapper
+        }`,
       language: language,
     });
 
@@ -85,8 +84,7 @@ function testDefaultSupportedLanguages(language: string, config: Language) {
 
     assert.equal(
       result,
-      `${config.stringWrapper}\\${config.stringWrapper} ${config.symbol}{}${
-        config.stringWrapper
+      `${config.stringWrapper}\\${config.stringWrapper} ${config.symbol}{}${config.stringWrapper
       }`,
     );
   });
@@ -130,8 +128,7 @@ function testDefaultSupportedLanguages(language: string, config: Language) {
 
     assert.equal(
       result,
-      `${config.stringWrapper}${config.symbol}{test} ${
-        config.symbol
+      `${config.stringWrapper}${config.symbol}{test} ${config.symbol
       }{test_test}${config.stringWrapper}`,
     );
   });

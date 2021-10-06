@@ -9,7 +9,7 @@ export interface Configuration {
   languages: { [languageId: string]: Language };
 }
 
-function Config(): Configuration {
+function config(): Configuration {
   const languages = workspace.getConfiguration('auto').get('languages', {});
 
   return {
@@ -17,4 +17,4 @@ function Config(): Configuration {
   };
 }
 
-export default Config();
+export default config();

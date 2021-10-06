@@ -121,4 +121,4 @@ export function activate(context: ExtensionContext) {
   );
 }
 
-export function deactivate() {}
+export function deactivate() { }
