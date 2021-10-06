@@ -92,6 +92,10 @@
             "ecr": {
               "symbol": "#",
               "stringWrapper": "\""
+            },
+            "dart": {
+              "symbol": "$",
+              "stringWrapper": "'"
             }
           }
         }
@@ -167,6 +171,11 @@
         "command": "auto.addInterpolation",
         "key": "shift+3",
         "when": "editorTextFocus && editorLangId == 'ecr' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
+      },
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+4",
+        "when": "editorTextFocus && editorLangId == 'dart' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       }
     ],
     "languages": [
