@@ -7,14 +7,5 @@
     "out": true // set this to false to include "out" folder in search results
   },
   // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
-  "typescript.tsc.autoDetect": "off",
-
-  "tslint.enable": true,
-
-  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 80,
-  "importSorter.importStringConfiguration.tabSize": 2,
-  "importSorter.importStringConfiguration.trailingComma": "multiLine",
-  "importSorter.importStringConfiguration.tabType": "space",
-  "importSorter.importStringConfiguration.quoteMark": "single",
-  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimitExceptIfOnlyOne"
+  "typescript.tsc.autoDetect": "off"
 }
