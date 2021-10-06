@@ -96,6 +96,10 @@
             "dart": {
               "symbol": "$",
               "stringWrapper": "'"
+            },
+            "kotlin": {
+              "symbol": "$",
+              "stringWrapper": "\""
             }
           }
         }
@@ -176,6 +180,11 @@
         "command": "auto.addInterpolation",
         "key": "shift+4",
         "when": "editorTextFocus && editorLangId == 'dart' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
+      },
+      {
+        "command": "auto.addInterpolation",
+        "key": "shift+4",
+        "when": "editorTextFocus && editorLangId == 'kotlin' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       }
     ],
     "languages": [
@@ -250,6 +259,15 @@
         ],
         "extensions": [
           ".ecr"
+        ]
+      },
+      {
+        "id": "kotlin",
+        "aliases": [
+          "Kotlin"
+        ],
+        "extensions": [
+          ".kt"
         ]
       }
     ]
