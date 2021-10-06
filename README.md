@@ -14,6 +14,7 @@ By default the following languages are enabled:
 
 - Coffeescript
 - Crystal
+- Dart
 - Elixir
 - Embedded Crystal
 - ERB
@@ -22,7 +23,9 @@ By default the following languages are enabled:
 - Javascript
 - Javascript React
 - Javascript Vue
+- Kotlin
 - Ruby
+- Scala
 - Slim
 - Typescript
 - Typescript React
