@@ -22,7 +22,7 @@ suite('Auto Add Brackets in String Interpolation', async () => {
 
     const result = editor.document.getText();
 
-    assert.equal(result, expectedResult);
+    assert.strictEqual(result, expectedResult);
   });
 
   for (let language in Config.languages) {
@@ -44,7 +44,7 @@ function testDefaultSupportedLanguages(language: string, config: Language) {
 
     const result = editor.document.getText();
 
-    assert.equal(result, config.symbol);
+    assert.strictEqual(result, config.symbol);
   });
 
   test(`[${language}] interpolation when inside a string wrapper but no selection`, async () => {
@@ -61,7 +61,7 @@ function testDefaultSupportedLanguages(language: string, config: Language) {
 
     const result = editor.document.getText();
 
-    assert.equal(
+    assert.strictEqual(
       result,
       `${config.stringWrapper}test ${config.symbol}{}${config.stringWrapper}`,
     );
@@ -82,7 +82,7 @@ function testDefaultSupportedLanguages(language: string, config: Language) {
 
     const result = editor.document.getText();
 
-    assert.equal(
+    assert.strictEqual(
       result,
       `${config.stringWrapper}\\${config.stringWrapper} ${config.symbol}{}${config.stringWrapper
       }`,
@@ -103,7 +103,7 @@ function testDefaultSupportedLanguages(language: string, config: Language) {
 
     const result = editor.document.getText();
 
-    assert.equal(
+    assert.strictEqual(
       result,
       `${config.stringWrapper}${config.symbol}{test}${config.stringWrapper}`,
     );
@@ -126,7 +126,7 @@ function testDefaultSupportedLanguages(language: string, config: Language) {
 
     const result = editor.document.getText();
 
-    assert.equal(
+    assert.strictEqual(
       result,
       `${config.stringWrapper}${config.symbol}{test} ${config.symbol
       }{test_test}${config.stringWrapper}`,
