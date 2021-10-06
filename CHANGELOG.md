@@ -1,3 +1,12 @@
+# [0.12.0](https://github.com/aliariff/vscode-auto-add-brackets/compare/v0.11.0...v0.12.0) (2021-10-06)
+
+
+### Features
+
+* support dart ([65ae67d](https://github.com/aliariff/vscode-auto-add-brackets/commit/65ae67d8ed27e1facd859877ee2ebb2ee3de5c93))
+* support kotlin ([a16d277](https://github.com/aliariff/vscode-auto-add-brackets/commit/a16d277fdf5507f38143f8db78a2c9266c4cfd8e))
+* support scala ([1ba3509](https://github.com/aliariff/vscode-auto-add-brackets/commit/1ba3509016cd530082729e0811d15cfa2f91920f))
+
 # Change Log
 All notable changes to this project will be documented in this file.
 
