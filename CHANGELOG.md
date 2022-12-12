@@ -1,3 +1,10 @@
+## [0.12.1](https://github.com/aliariff/vscode-auto-add-brackets/compare/v0.12.0...v0.12.1) (2022-12-12)
+
+
+### Bug Fixes
+
+* [#28](https://github.com/aliariff/vscode-auto-add-brackets/issues/28) ([ced6f61](https://github.com/aliariff/vscode-auto-add-brackets/commit/ced6f61cbda256008edfba5ddcb406f647720b8f))
+
 # [0.12.0](https://github.com/aliariff/vscode-auto-add-brackets/compare/v0.11.0...v0.12.0) (2021-10-06)
 
 
