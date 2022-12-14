@@ -1,4 +1,4 @@
-import { workspace } from 'vscode';
+import { workspace } from "vscode";
 
 export interface Language {
   symbol: string;
@@ -10,7 +10,7 @@ export interface Configuration {
 }
 
 function config(): Configuration {
-  const languages = workspace.getConfiguration('auto').get('languages', {});
+  const languages = workspace.getConfiguration("auto").get("languages", {});
 
   return {
     languages: languages,

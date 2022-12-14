@@ -6,17 +6,17 @@ import {
   Selection,
   TextEditor,
   window,
-} from 'vscode';
+} from "vscode";
 
-import Config, { Language } from './config';
+import Config, { Language } from "./config";
 
 function isInsideString(
   editor: TextEditor,
   stringWrapper: string,
-  selection: Selection,
+  selection: Selection
 ) {
   const lineText = editor.document.getText(
-    new Range(new Position(selection.start.line, 0), selection.start),
+    new Range(new Position(selection.start.line, 0), selection.start)
   );
 
   let occurrences = lineText.split(stringWrapper).length - 1;
@@ -34,7 +34,7 @@ function isInsideString(
 function shouldInterpolate(
   editor: TextEditor,
   language: Language,
-  selection: Selection,
+  selection: Selection
 ) {
   if (selection === undefined) {
     selection = editor.selection;
@@ -51,18 +51,18 @@ function shouldInterpolate(
 function updateSelections(editor: TextEditor) {
   const updatedSelections: Selection[] = [];
 
-  editor.selections.forEach(selection => {
+  editor.selections.forEach((selection) => {
     // If selection is empty we either did not add an interpolation
     // or we added it without having anything selected
     if (selection.isEmpty) {
       const characterBeforeCursor = editor.document.getText(
-        new Range(selection.start, selection.end.translate(0, -1)),
+        new Range(selection.start, selection.end.translate(0, -1))
       );
 
       // If the characterBeforeCursor is a '}' it means that we did add a
       // interpolation, so we want to move one character back to position
       // the cursor in the middle of it.
-      if (characterBeforeCursor === '}') {
+      if (characterBeforeCursor === "}") {
         const newPosition = selection.start.translate(0, -1);
         updatedSelections.push(new Selection(newPosition, newPosition));
       } else {
@@ -74,7 +74,7 @@ function updateSelections(editor: TextEditor) {
       // In this case we added a interpolation with stuff selected, so let's
       // position the selection properly
       updatedSelections.push(
-        new Selection(selection.start, selection.end.translate(0, -1)),
+        new Selection(selection.start, selection.end.translate(0, -1))
       );
     }
   });
@@ -91,16 +91,16 @@ async function autoAddInterpolation() {
   const language = Config.languages[editor.document.languageId];
   if (language === undefined) {
     window.showErrorMessage(
-      `Language configuration not found for: ${editor.document.languageId}`,
+      `Language configuration not found for: ${editor.document.languageId}`
     );
     return;
   }
 
-  await editor.edit(editBuilder => {
-    editor.selections.forEach(selection => {
+  await editor.edit((editBuilder) => {
+    editor.selections.forEach((selection) => {
       if (shouldInterpolate(editor, language, selection)) {
         editBuilder.insert(selection.start, `${language.symbol}{`);
-        editBuilder.insert(selection.end, '}');
+        editBuilder.insert(selection.end, "}");
       } else {
         // Just passthrough and insert the symbol as if the extension did not even exist
         editBuilder.insert(selection.start, language.symbol);
@@ -115,10 +115,10 @@ export function activate(context: ExtensionContext) {
   console.log('"auto-add-brackets" extension is now active!');
 
   context.subscriptions.push(
-    commands.registerCommand('auto.addInterpolation', () => {
+    commands.registerCommand("auto.addInterpolation", () => {
       autoAddInterpolation();
-    }),
+    })
   );
 }
 
-export function deactivate() { }
+export function deactivate() {}
