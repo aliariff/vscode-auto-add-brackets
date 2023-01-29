@@ -3,6 +3,7 @@ import { workspace } from "vscode";
 export interface Language {
   symbol: string;
   stringWrapper: string;
+  heredocSupport: boolean
 }
 
 export interface Configuration {

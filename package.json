@@ -1,21 +1,20 @@
 {
-  "name": "auto-add-brackets",
-  "displayName": "Auto Add Brackets in String Interpolation",
-  "description": "Automatically add complete brackets when writing interpolated string",
+  "name": "ruby-brackets",
+  "displayName": "Ruby Brackets String Interpolation with HEREDOC support",
+  "description": "Automatically add complete brackets when writing interpolated string or HEREDOC'S",
   "version": "0.12.2",
-  "publisher": "aliariff",
+  "publisher": "raymond-hughes",
   "license": "MIT",
   "icon": "images/icon.png",
-  "bugs": "https://github.com/aliariff/vscode-auto-add-brackets/issues",
+  "bugs": "https://github.com/Vet-Notes/ruby-brackets/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aliariff/vscode-auto-add-brackets"
+    "url": "https://github.com/Vet-Notes/ruby-brackets"
   },
   "engines": {
     "vscode": "^1.60.0"
   },
   "categories": [
-    "Keymaps",
     "Formatters",
     "Other"
   ],
@@ -30,11 +29,11 @@
   ],
   "contributes": {
     "configuration": {
-      "title": "Auto Add Brackets",
+      "title": "Ruby Brackets",
       "type": "object",
       "properties": {
         "auto.languages": {
-          "title": "Auto Add Brackets In String Interpolations to files with these languages",
+          "title": "Ruby Brackets String Interpolation with HEREDOC support",
           "type": "object",
           "default": {
             "ruby": {
@@ -70,10 +69,6 @@
               "stringWrapper": "\""
             },
             "erb": {
-              "symbol": "#",
-              "stringWrapper": "\""
-            },
-            "haml": {
               "symbol": "#",
               "stringWrapper": "\""
             },
@@ -124,11 +119,6 @@
         "command": "auto.addInterpolation",
         "key": "shift+3",
         "when": "editorTextFocus && editorLangId == 'erb' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
-      },
-      {
-        "command": "auto.addInterpolation",
-        "key": "shift+3",
-        "when": "editorTextFocus && editorLangId == 'haml' && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
       },
       {
         "command": "auto.addInterpolation",
@@ -217,17 +207,6 @@
         "extensions": [
           ".ex",
           ".exs"
-        ]
-      },
-      {
-        "id": "haml",
-        "aliases": [
-          "Ruby Haml",
-          "Haml",
-          "haml"
-        ],
-        "extensions": [
-          ".haml"
         ]
       },
       {

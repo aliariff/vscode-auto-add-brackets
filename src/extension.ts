@@ -19,6 +19,9 @@ function isInsideString(
     new Range(new Position(selection.start.line, 0), selection.start)
   );
 
+  console.log(stringWrapper);
+  console.log(lineText);
+
   let occurrences = lineText.split(stringWrapper).length - 1;
   const escaped = lineText.split(`\\${stringWrapper}`).length - 1;
 
