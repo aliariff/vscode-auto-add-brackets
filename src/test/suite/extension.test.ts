@@ -25,8 +25,9 @@ suite("Auto Add Brackets in String Interpolation", async () => {
     assert.strictEqual(result, expectedResult);
   });
 
-  for (let language in Config.languages) {
-    testDefaultSupportedLanguages(language, Config.languages[language]);
+  for (const language in Config.languages) {
+    const config = Config.languages[language];
+    testDefaultSupportedLanguages(language, config);
   }
 });
 
