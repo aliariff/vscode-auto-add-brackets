@@ -73,7 +73,11 @@ Then add the keybind for the language:
 
 > If you are a Vim mode user you should also add `vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'` to your "when" clause
 
-## Related issue:
+## Known Issues:
+
+- If you are using a non-US keyboard layout, read this [solution](https://github.com/aliariff/vscode-auto-add-brackets/issues/9#issuecomment-548724717).
+
+## Related issues:
 
 [vscode-ruby/#200](https://github.com/rubyide/vscode-ruby/issues/200)
 
